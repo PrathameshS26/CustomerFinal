@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css" ;
+
+
+/* @import '~@angular/material/prebuilt-themes/Pink-bluegrey.css'; */
+@import '~@angular/material/prebuilt-themes/Deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/Purple-green.css';
