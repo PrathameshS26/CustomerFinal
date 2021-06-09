@@ -11,6 +11,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material';
 import { DeleteCustomerComponent } from './delete-customer/delete-customer.component';
 import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
+import { CreateCustomerComponent } from './create-customer/create-customer.component';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatMenuModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatSlideToggleModule,
+} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -18,11 +35,47 @@ import { ConfirmationDialogComponent } from './components/shared/confirmation-di
     CustomertabComponent,
     CustomerlistComponent,
     DeleteCustomerComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CreateCustomerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MatDialogModule, MatButtonModule
+    FormsModule,
+    AppRoutingModule, 
+    HttpClientModule, 
+    BrowserModule,      
+    FormsModule,      
+    ReactiveFormsModule,      
+    MatButtonModule,      
+    MatMenuModule,      
+    MatToolbarModule,      
+    MatIconModule,      
+    MatCardModule,      
+    BrowserAnimationsModule,      
+    MatFormFieldModule,      
+    MatInputModule,      
+    MatDatepickerModule,      
+    MatNativeDateModule,      
+    MatRadioModule,      
+    MatSelectModule,      
+    MatOptionModule,      
+    MatSlideToggleModule, MatDialogModule 
+  ],
+  exports: [
+    MatButtonModule,
+		MatMenuModule,
+		MatToolbarModule,
+		MatIconModule,
+		MatCardModule,
+		BrowserAnimationsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatDatepickerModule,
+		MatNativeDateModule,
+		MatRadioModule,
+		MatSelectModule,
+		MatOptionModule,
+		MatSlideToggleModule
   ],
   entryComponents:[ ConfirmationDialogComponent],
   providers: [CustomerService],
