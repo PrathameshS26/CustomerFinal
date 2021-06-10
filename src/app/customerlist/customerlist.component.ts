@@ -24,7 +24,7 @@ export class CustomerlistComponent implements OnInit {
   
   }
 
-  openDialog(): void {
+  openDialog(cid): void {
     console.log("Dailog method is called");
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
@@ -33,6 +33,7 @@ export class CustomerlistComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         console.log('Yes clicked');
+        this.router.navigateByUrl("/deletecustomer/"+cid)
         // let customerid: number = this.activatedRoute.snapshot.params['id'];
         // console.log(customerid);
         // this.customerservice.deleteCustomer(customerid).subscribe(data => console.log(data));
@@ -41,7 +42,14 @@ export class CustomerlistComponent implements OnInit {
     });
   }
 
-  updateCourse(cid)
+  getCustomer(cid){
+    console.log('getCustomer method called');
+    console.log(cid);
+    this.router.navigateByUrl("/customerdetails/"+cid)
+
+  }
+
+  updateCustomer(cid)
   {
     console.log("customer list first step")
     console.log(cid);

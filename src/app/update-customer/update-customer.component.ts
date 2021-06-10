@@ -13,15 +13,29 @@ import { CustomerService } from '../service/customer.service';
 export class UpdateCustomerComponent  {
   cid : number;
   //customer: Icustomer = {customerId : 0,customerFirstName: '', customerLastName: '', orgUnit: {orgName: '', phoneNumber : 0},postal: {postalCodeValue: 0, cityname: '',countryname: '',statename: ''}};
-  customer : Icustomer;
+  
   customerprofile : FormGroup;
-  // submitted : boolean = false;
+  customer : Icustomer;
+  
 
   constructor(private form: FormBuilder, private router: Router,private activatedRoute: ActivatedRoute, private customerService: CustomerService) { 
-   // this.customerService.getCustomerbyId(+this.activatedRoute.snapshot.params['id']).subscribe(customerOne => this.customer = customerOne);
-    // console.log("constructor is called");
-    // console.log(this.customer.customerId);
+  
   }
+  displayCustomer(){
+    console.log('******Display method called*******');
+    console.log(this.customer.postal.postalCodeValue);
+  }
+  updateCustomer(newCustomer) {
+    console.log("*******")
+      console.log(newCustomer)
+      console.log("*******")
+      this.customerService.updateCustomer(newCustomer).subscribe(customernew => this.customer = customernew);
+      console.log(this.customer);
+      console.log(newCustomer)
+      alert('UPDATED!! :-)\n\n' + JSON.stringify(this.customerprofile.value));
+      this.router.navigate(['/customers'])
+    
+    }
 
   ngOnInit(): void {
   
@@ -34,7 +48,7 @@ export class UpdateCustomerComponent  {
         phoneNumber: ['',  Validators.required]
       }),
       postal: this.form.group({
-        postalCodeValue: ['', [Validators.required, Validators.pattern('[0-9]{3}')]],
+        postalCodeValue: ['', [Validators.required]],
         cityname: [''],
         countryname: [''],
         statename: [''],
@@ -42,55 +56,18 @@ export class UpdateCustomerComponent  {
     });
     
     this.customerService.getCustomerbyId(+this.activatedRoute.snapshot.params['id']).subscribe(cus => this.customer = cus);
-
+    console.log('ngonit console update customer id');
+    console.log(this.activatedRoute.snapshot.params['id']);
+    console.log('Customer object'+this.customer);
 
     this.customerprofile.setValue(this.customer);
 
     
-    // this.customerprofile.patchValue({
-    //   customerId:this.customer.customerId,
-    //   customerFirstName: this.customer.customerFirstName,
-    //   customerLastName: this.customer.customerLastName,
-    //   orgUnit: {
-    //     orgName: this.customer.orgUnit.orgName,
-    //     phoneNumber: this.customer.orgUnit.phoneNumber,
-    //   },
-    //   postal: {
-    //     postalCodeValue: this.customer.postal.postalCodeValue,
-    //     cityname: this.customer.postal.cityname,
-    //     countryname: this.customer.postal.countryname,
-    //     statename: this.customer.postal.statename
-    //   }
-    // });
   }
-  // ngOnInit(): void {
-    
-  //   console.log("Update form is pre filled");
+  
 
   
 
     
-  //   console.log("Ng On init is called");
-  //   console.log(this.customer.customerId);
-
-  // }
-
-  // convenience getter for easy access to form fields
-  // get f() { return this.customerprofile.controls; }
-
-  // updateCourse(customer){
-  //   this.customerService.updateCustomer(customer).subscribe(pipe());
-  // }
-
-  // onSubmit() {
-  //   this.submitted = true;
-
-  //   if (this.customerprofile.invalid) {
-  //       return;
-  //   }
-
-  //   this.customerService.addCustomer(this.customerprofile.value).subscribe(customernew => this.customer = customernew);
-
-  //   alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerprofile.value))
-  //   }
+  
 }

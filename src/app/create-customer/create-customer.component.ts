@@ -37,32 +37,40 @@ export class CreateCustomerComponent  {
   // convenience getter for easy access to form fields
   get f() { return this.customerprofile.controls; }
 
-  defaultProfile() {
-    this.customerprofile.patchValue({
-      customerFirstName: 'Nancy',
-      customerLastName: 'Doron',
-      orgUnit: {
-        orgName: 'Mango',
-        phoneNumber: 23542435,
-      },
-      postal: {
-        postalCodeValue: 123,
-        cityname: "Mumbai",
-        countryname: "India",
-        statename: "Maharashtra"
-      }
-    });
+  // defaultProfile() {
+  //   this.customerprofile.patchValue({
+  //     customerFirstName: 'Nancy',
+  //     customerLastName: 'Doron',
+  //     orgUnit: {
+  //       orgName: 'Mango',
+  //       phoneNumber: 23542435,
+  //     },
+  //     postal: {
+  //       postalCodeValue: 123,
+  //       cityname: "Mumbai",
+  //       countryname: "India",
+  //       statename: "Maharashtra"
+  //     }
+  //   });
+  // }
+  addCustomer(newcustomer) {
+    this.customerService.addCustomer(newcustomer).subscribe(cus => this.customer = cus);
+    console.log(this.customer+"Skeleton customer");
+    console.log(newcustomer);
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerprofile.value));
+    this.router.navigate(['/customers']);
+    console.log(newcustomer);
   }
 
-  onSubmit() {
-    this.submitted = true;
+  // onSubmit(newCustomer) {
+  //   this.submitted = true;
 
-    if (this.customerprofile.invalid) {
-        return;
-    }
-
-    this.customerService.addCustomer(this.customerprofile.value).subscribe(customernew => this.customer = customernew);
-
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerprofile.value))
-    }
+  //   if (this.customerprofile.invalid) {
+  //       return;
+  //   }
+  //   console.log(newCustomer+'New Customer Created')
+  //   this.customerService.addCustomer(newCustomer).subscribe(customernew => this.customer = customernew);
+  //   console.log(this.customer+"Skeleton customer");
+  //   alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerprofile.value))
+  //   }
 }

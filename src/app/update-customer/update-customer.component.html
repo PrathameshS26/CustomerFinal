@@ -5,116 +5,128 @@
     <div class="col-md-8">
       <div class="jumbotron">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h3 class="text-center">Customer Registration</h3>
-                    <form [formGroup]="customerprofile" (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" formControlName="customerFirstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" placeholder="Enter First Name"/>
-                            <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h3 class="text-center">Customer Update</h3>
+              <form [formGroup]="customerprofile" (ngSubmit)="updateCustomer(customerprofile.value)">
+                <div class="form-group">
+                  <label>Customer ID</label>
+                  <input type="text" formControlName="customerId" class="form-control" readonly
+                    [(ngModel)]="customer.customerId" placeholder="Enter First Name" />
+                  <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                        </div> -->
+                  <span
+                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched">Please
+                    Enter First Name</span>
+                </div>
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" formControlName="customerFirstName" class="form-control"
+                    [(ngModel)]="customer.customerFirstName" placeholder="Enter First Name" />
+                  <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div> -->
-                              <span *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched">Please Enter First Name</span>
-                        </div>             
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" formControlName="customerLastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" placeholder="Enter Last Name" />
-                            <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <span
+                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched">Please
+                    Enter First Name</span>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" formControlName="customerLastName" class="form-control"
+                    [(ngModel)]="customer.customerLastName" placeholder="Enter Last Name" />
+                  <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div> -->
-                            <span *ngIf="!customerprofile.get('customerLastName').valid && customerprofile.get('customerLastName').touched">Please Enter Last Name</span>
-                        </div>
-                        <div formGroupName="orgUnit">
-                        <div class="form-group">
-                            <label>Organisation Name</label>
-                            <input type="text" formControlName="orgName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" placeholder="Enter Organisation Name"/>
-                            <!-- <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                  <span
+                    *ngIf="!customerprofile.get('customerLastName').valid && customerprofile.get('customerLastName').touched">Please
+                    Enter Last Name</span>
+                </div>
+                <div formGroupName="orgUnit">
+                  <div class="form-group">
+                    <label>Organisation Name</label>
+                    <input type="text" formControlName="orgName" class="form-control"
+                      [(ngModel)]="customer.orgUnit.orgName" placeholder="Enter Organisation Name" />
+                    <!-- <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                 <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                             </div> -->
-                            <span *ngIf="!customerprofile.get('orgName').valid && customerprofile.get('orgName').touched">Please Enter Organisation Name</span>
-                        </div> 
-                        <div class="form-group">
-                            <label>Organisation Phone Number</label>
-                            <input type="number" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Enter Phone Number"/>
-                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                <div *ngIf="f.email.errors.required">Email is required</div>
-                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                            </div>
-                        </div>
-                        </div>
-                        <div formGroupName="postal">
-                          <div class="form-group">
-                            <label>PostalCode</label>
-                            <input type="number"  formControlName="postalCodeValue" class="form-control" placeholder="PostalCode">                 
-                            </div>
-                        </div>
-                        <div formGroupName="postal">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>City Name</label>
-                                  <input type="text"  formControlName="cityname" readonly class="form-control" placeholder="Read Only">                 
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>Country Name</label>
-                                  <input type="text"  formControlName="countryname" readonly class="form-control" placeholder="Read Only">                 
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>State Name</label>
-                                  <input type="text"  formControlName="statename" readonly class="form-control" placeholder="Read Only">                 
-                               </div>
-                              </div>
-                            </div>
-                        </div>   <br>
-                        <div class=" form-group" data-toggle="buttons">
-                          <div class="row">
-                            <div class="col-md-3 btn-group btn-group-toggle">
-                              <div class="form-group">    
-                                     
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="btn-group btn-group-toggle"> 
-                                <label class="btn btn-secondary active">   
-                                  <button type="submit" class="btn btn-secondary active btn-sm" checked>Register</button>     
-                                  <!-- <input type="radio" name="options" id="option1" autocomplete="off" checked> Register -->
-                                </label>
-                                <label class="btn btn-secondary">
-                                  <button class="btn btn-secondary btn-sm" (click)="defaultProfile()">Default</button>   
-                                  <!-- <input type="radio" name="options" id="option2" autocomplete="off" (click)="updateProfile()"> Default -->
-                                </label>
-                                <label class="btn btn-secondary">
-                                  <button type="reset" class="btn btn-secondary  btn-sm" >Cancel</button>   
-                                  <!-- <input type="radio" name="options" id="option3" autocomplete="off"> Cancel -->
-                                </label>            
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">              
-                             </div>
-                            </div>
-                          </div>
-                          
-                        </div>                   
-                        <!-- <div class="form-group">
-                            <button type="submit" class="btn btn-primary" [disabled]="!customerprofile.valid">Register</button>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            <button class="btn btn-primary" (click)="defaultProfile()">Default</button>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            <button type="reset" class="btn btn-primary" >Cancel</button>
-                        </div> -->
-                    </form>
+                    <!-- <span *ngIf="!customerprofile.get('orgName').valid && customerprofile.get('orgName').touched">Please
+                      Enter Organisation Name</span> -->
+                    </div>
+                 <div class="form-group">
+                    <label>Organisation Phone Number</label>
+                    <input type="number" formControlName="phoneNumber" class="form-control"
+                      [(ngModel)]="customer.orgUnit.phoneNumber" placeholder="Enter Phone Number" />
+                    </div>
+                
                 </div>
+                <div formGroupName="postal">
+                  <div class="form-group">
+                    <label>PostalCode</label>
+                    <input type="text" formControlName="postalCodeValue" class="form-control"
+                      [(ngModel)]="customer.postal.postalCodeValue" placeholder="PostalCode">
+                  
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="form-group">
+                        <label>City Name</label>
+                        <input type="text" formControlName="cityname" readonly class="form-control"
+                          [(ngModel)]="customer.postal.cityname">
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <div class="form-group">
+                        <label>State Name</label>
+                        <input type="text" formControlName="statename" readonly class="form-control"
+                          [(ngModel)]="customer.postal.statename">
+                      </div>
+                    </div>
+                    <div class="col-8">
+                      <div class="form-group">
+                        <label>Country Name</label>
+                        <input type="text" formControlName="countryname" readonly class="form-control"
+                          [(ngModel)]="customer.postal.countryname">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                 <br>
+                <div class=" form-group" data-toggle="buttons">
+                  <div class="row">
+                    <div class="col-md-3 btn-group btn-group-toggle">
+                      <div class="form-group">
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="btn-group btn-group-toggle">
+                        <label class="btn btn-secondary active">
+                          <button type="submit" class="btn btn-secondary active btn-sm" checked>Update</button>
+                          <!-- <input type="radio" name="options" id="option1" autocomplete="off" checked> Register -->
+                        </label>
+                        <label class="btn btn-secondary">
+                          <button class="btn btn-secondary  btn-sm" (click)="displayCustomer()">Cancel</button>
+                          <!-- <input type="radio" name="options" id="option3" autocomplete="off"> Cancel -->
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
             </div>
+          </div>
         </div>
       </div>
       <p align="center">
         Form Status: {{ customerprofile.status }}
       </p>
-      <pre align="center"> {{customerprofile.value | json}} </pre>  
+      <pre align="center"> {{customerprofile.value | json}} </pre>
     </div>
     <div class="col-md-2">
     </div>

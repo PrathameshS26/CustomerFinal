@@ -1,0 +1,21 @@
+<div class="container-fluid" >
+  <div>
+      <div>
+          <p>First Name: {{customer?.customerFirstName}}</p>
+          <p>Last Name: {{customer?.customerLastName}}</p>
+          <p>Customer Id: {{customer?.customerId}}</p>
+      </div>
+      <div><h3>Org Details:</h3>
+          <p>Org : {{customer?.orgUnit.orgName}}</p>
+          <p>Org Id: {{customer?.orgUnit?.orgId}}</p>
+          <p>Phone: {{customer?.orgUnit?.phoneNumber}}</p>
+      </div>
+      <div><h3>Address:</h3>
+          <p>Postal Code : {{customer?.postal?.postalCodeValue}}</p>
+          <p>City: {{customer?.postal?.cityname}}</p>
+          <p>State: {{customer?.postal?.statename}}</p>
+          <p>Country: {{customer?.postal?.countryname}}</p>
+      </div>
+  </div>
+  </div>
+

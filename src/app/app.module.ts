@@ -28,6 +28,7 @@ import {
   MatSlideToggleModule,
 } from '@angular/material';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
+import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
     DeleteCustomerComponent,
     ConfirmationDialogComponent,
     CreateCustomerComponent,
-    UpdateCustomerComponent
+    UpdateCustomerComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
