@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Icustomer } from '../model/customer.model';
+import { CustomerService } from '../service/customer.service';
 
 @Component({
   selector: 'app-create-customer',
@@ -7,25 +10,59 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
   styleUrls: ['./create-customer.component.css']
 })
 export class CreateCustomerComponent  {
-  loginForm: FormGroup;
-  emailRegx = /^(([^<>+()\[\]\\.,;:\s@"-#$%&=]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) { }
+  customer: Icustomer = {customerFirstName: '', customerLastName: '', orgUnit: {orgName: '', phoneNumber : 0},postal: {postalCodeValue: 0, cityname: '',countryname: '',statename: ''}};
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.pattern(this.emailRegx)]],
-      password: [null, Validators.required]
+  customerprofile : FormGroup;
+  submitted : boolean = false;
+
+  constructor(private form: FormBuilder, private router: Router, private customerService: CustomerService) { }
+  ngOnInit(): void {
+    this.customerprofile = this.form.group({
+      customerFirstName: ['', Validators.required],
+      customerLastName: ['',Validators.required],
+      orgUnit: this.form.group({
+        orgName: ['', Validators.required],
+        phoneNumber: ['',  Validators.required]
+      }),
+      postal: this.form.group({
+        postalCodeValue: ['', [Validators.required, Validators.pattern('[0-9]{3}')]],
+        cityname: [''],
+        countryname: [''],
+        statename: [''],
+      }),
     });
   }
 
-  submit() {
-    if (!this.loginForm.valid) {
-      return;
-    }
-    console.log(this.loginForm.value);
+  // convenience getter for easy access to form fields
+  get f() { return this.customerprofile.controls; }
+
+  defaultProfile() {
+    this.customerprofile.patchValue({
+      customerFirstName: 'Nancy',
+      customerLastName: 'Doron',
+      orgUnit: {
+        orgName: 'Mango',
+        phoneNumber: 23542435,
+      },
+      postal: {
+        postalCodeValue: 123,
+        cityname: "Mumbai",
+        countryname: "India",
+        statename: "Maharashtra"
+      }
+    });
   }
 
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.customerprofile.invalid) {
+        return;
+    }
+
+    this.customerService.addCustomer(this.customerprofile.value).subscribe(customernew => this.customer = customernew);
+
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerprofile.value))
+    }
 }

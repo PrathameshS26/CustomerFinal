@@ -9,7 +9,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">CID</th>
+            <th scope="col">CustomerID</th> 
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
           </tr>
@@ -17,12 +17,12 @@
         <tbody>
           <tr *ngFor="let customer of customers, let i=index">
             <th scope="row">{{i + 1}}</th>
-            <td >{{customer.customerId}}</td>
+            <td >{{customer.customerId}}</td> 
             <td>{{customer.customerFirstName}}</td>
             <td>{{customer.customerLastName}}</td>
-            <td><button type="button" class="btn btn-primary"><i class="fa fa-bars"></i> Details</button></td>
-              <td><button type="button" class="btn btn-primary"> <i class="fa fa-pencil"></i>  Edit</button></td>
-              <td><button class="btn" (click)="openDialog()" ><i class="fa fa-trash"></i> Delete</button></td>
+            <td><button type="button" class="btn btn-default btn-sm"><i class="fa fa-bars"></i> Details</button></td>
+              <td><button type="button" class="btn btn-primary btn-sm" (click)="updateCourse(customer.customerId)"> <i class="fa fa-pencil"></i>  Edit</button></td>
+              <td><button class="btn btn-primary btn-sm btn-sm" (click)="openDialog()" ><i class="fa fa-trash"></i> Delete</button></td>
           </tr>
          
         </tbody>
