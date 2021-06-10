@@ -81,7 +81,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 		MatOptionModule,
 		MatSlideToggleModule
   ],
-  entryComponents:[ ConfirmationDialogComponent ],
+  entryComponents:[ ConfirmationDialogComponent, CustomerDetailsComponent ],
   providers: [CustomerService],
   bootstrap: [AppComponent]
 })

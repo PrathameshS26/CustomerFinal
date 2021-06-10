@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationDialogComponent } from '../components/shared/confirmation-dialog/confirmation-dialog.component';
+import { CustomerDetailsComponent } from '../customer-details/customer-details.component';
 import { Icustomer } from '../model/customer.model';
 import { CustomerService } from '../service/customer.service';
 import { UpdateCustomerComponent } from '../update-customer/update-customer.component';
@@ -33,21 +34,45 @@ export class CustomerlistComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         console.log('Yes clicked');
-        this.router.navigateByUrl("/deletecustomer/"+cid)
-        // let customerid: number = this.activatedRoute.snapshot.params['id'];
-        // console.log(customerid);
-        // this.customerservice.deleteCustomer(customerid).subscribe(data => console.log(data));
-        // DO SOMETHING
+        console.log(cid);
+        // this.router.navigateByUrl("/deletecustomer/"+cid)
+        this.customerservice.deleteCustomer(cid).subscribe(data => console.log(data));
+         this.router.navigateByUrl("/customers");
       }
     });
   }
 
-  getCustomer(cid){
-    console.log('getCustomer method called');
-    console.log(cid);
-    this.router.navigateByUrl("/customerdetails/"+cid)
 
+
+
+
+
+  getCustomer(cid): void {
+    // const dialogConfig = new MatDialogConfig();
+
+    // dialogConfig.data = {
+    //     customerID: cid
+      
+    // };
+    
+    // const dialogSubTaskRef = this.dialog.open(CustomerDetailsComponent,{},);
+
+
+    console.log("Dailog method is called");
+    const dialogRef = this.dialog.open(CustomerDetailsComponent,{
+      width: '450px', height:'500px',
+      data:cid,
+    });
+    console.log(cid);
+        this.customerservice.getCustomerbyId(cid).subscribe(data => console.log(data));
   }
+
+  // getCustomer(cid){
+  //   console.log('getCustomer method called');
+  //   console.log(cid);
+  //   this.router.navigateByUrl("/customerdetails/"+cid)
+
+  // }
 
   updateCustomer(cid)
   {

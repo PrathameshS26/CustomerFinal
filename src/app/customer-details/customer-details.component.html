@@ -1,21 +1,23 @@
-<div class="container-fluid" >
-  <div>
-      <div>
-          <p>First Name: {{customer?.customerFirstName}}</p>
-          <p>Last Name: {{customer?.customerLastName}}</p>
-          <p>Customer Id: {{customer?.customerId}}</p>
-      </div>
-      <div><h3>Org Details:</h3>
-          <p>Org : {{customer?.orgUnit.orgName}}</p>
-          <p>Org Id: {{customer?.orgUnit?.orgId}}</p>
-          <p>Phone: {{customer?.orgUnit?.phoneNumber}}</p>
-      </div>
-      <div><h3>Address:</h3>
-          <p>Postal Code : {{customer?.postal?.postalCodeValue}}</p>
-          <p>City: {{customer?.postal?.cityname}}</p>
-          <p>State: {{customer?.postal?.statename}}</p>
-          <p>Country: {{customer?.postal?.countryname}}</p>
-      </div>
-  </div>
-  </div>
+<mat-card class="example-card">
+    <mat-card-content>
+        <div class="text-center">
+            <div mat-card-avatar class="center"></div>
+            <h4>Customer ID: {{customer?.customerId}}</h4>
+            <h5>{{customer?.customerFirstName|uppercase}} {{customer?.customerLastName|uppercase}}</h5>
+            <p>Org : {{customer?.orgUnit.orgName}}</p>
+            <p>Org Id: {{customer?.orgUnit?.orgId}}</p>
+            <p>Phone: {{customer?.orgUnit?.phoneNumber}}</p>
+        </div>
+        <div class="text-center">
+            <h6>Address:</h6>
+            <p>Postal Code : {{customer?.postal?.postalCodeValue}}</p>
+            <p>City: {{customer?.postal?.cityname}}</p>
+            <p>State: {{customer?.postal?.statename}}</p>
+            <p>Country: {{customer?.postal?.countryname}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button class="btn hover" (click)="onNoClick()">Back</button>
 
+    </mat-card-actions>
+</mat-card>
