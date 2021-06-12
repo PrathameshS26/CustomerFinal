@@ -31,6 +31,7 @@ import { UpdateCustomerComponent } from './update-customer/update-customer.compo
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
     ConfirmationDialogComponent,
     CreateCustomerComponent,
     UpdateCustomerComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
   ],
   imports: [
     BrowserModule,

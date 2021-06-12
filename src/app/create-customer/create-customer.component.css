@@ -2,3 +2,12 @@
   .text-center {
     text-align: center;
   }
+
+  input.ng-invalid.ng-touched {
+    border: 4px inset rgb(255, 113, 113);
+
+    
+  }
+  .alert-error{
+    color:rgb(211, 50, 50);
+ }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Icustomer } from '../model/customer.model';
 import { CustomerService } from '../service/customer.service';
+import { PostalValidator } from './postalcode.validator';
 
 @Component({
   selector: 'app-create-customer',
@@ -26,13 +27,23 @@ export class CreateCustomerComponent  {
         phoneNumber: ['',  Validators.required]
       }),
       postal: this.form.group({
-        postalCodeValue: ['', [Validators.required, Validators.pattern('[0-9]{3}')]],
+        postalCodeValue: ['',{
+          validators:[Validators.required],asyncValidators: [PostalValidator],
+          updateOn : 'blur'
+        } ],
         cityname: [''],
         countryname: [''],
         statename: [''],
       }),
     });
   }
+
+  get postalValid(){
+    console.log("****getter from postValid******")
+	 return	this.customerprofile.controls['postalCodeValue'];
+	}
+
+
 
   // convenience getter for easy access to form fields
   get f() { return this.customerprofile.controls; }

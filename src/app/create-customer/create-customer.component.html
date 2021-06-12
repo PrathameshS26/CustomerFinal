@@ -5,112 +5,130 @@
     <div class="col-md-8">
       <div class="jumbotron">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h3 class="text-center">Customer Registration</h3>
-                    <form [formGroup]="customerprofile" (ngSubmit)="addCustomer(customerprofile.value)">
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" formControlName="customerFirstName" class="form-control"  placeholder="Enter First Name"/>
-                            <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h3 class="text-center">Customer Registration</h3>
+              <form [formGroup]="customerprofile" (ngSubmit)="addCustomer(customerprofile.value)">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" formControlName="customerFirstName" class="form-control"
+                    placeholder="Enter First Name" />
+                  <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div> -->
-                              <span *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched">Please Enter First Name</span>
-                        </div>             
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text" formControlName="customerLastName" class="form-control"  placeholder="Enter Last Name" />
-                            <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                  <span
+                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched"
+                    class="alert-error">Please Enter First Name</span>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" formControlName="customerLastName" class="form-control"
+                    placeholder="Enter Last Name" />
+                  <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div> -->
-                            
-                        </div>
-                        <div formGroupName="orgUnit">
-                        <div class="form-group">
-                            <label>Organisation Name</label>
-                            <input type="text" formControlName="orgName" class="form-control"  placeholder="Enter Organisation Name"/>
-                            <!-- <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                  <span
+                    *ngIf="!customerprofile.get('customerLastName').valid && customerprofile.get('customerLastName').touched"
+                    class="alert-error">Please Enter Last Name</span>
+                </div>
+                <div formGroupName="orgUnit">
+                  <div class="form-group">
+                    <label>Organisation Name</label>
+                    <input type="text" formControlName="orgName" class="form-control"
+                      placeholder="Enter Organisation Name" />
+                    <!-- <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                 <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                             </div> -->
-                 
-                        </div> 
-                        <div class="form-group">
-                            <label>Organisation Phone Number</label>
-                            <input type="number" formControlName="phoneNumber" class="form-control" placeholder="Enter Phone Number"/>
-                        </div>
-                        </div>
-                        <div formGroupName="postal">
-                          <div class="form-group">
-                            <label>PostalCode</label>
-                            <input type="number"  formControlName="postalCodeValue" class="form-control" placeholder="PostalCode">                 
-                            </div>
-                        </div>
-                        <div formGroupName="postal">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>City Name</label>
-                                  <input type="text"  formControlName="cityname" readonly class="form-control" placeholder="Read Only">                 
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>Country Name</label>
-                                  <input type="text"  formControlName="countryname" readonly class="form-control" placeholder="Read Only">                 
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                  <label>State Name</label>
-                                  <input type="text"  formControlName="statename" readonly class="form-control" placeholder="Read Only">                 
-                               </div>
-                              </div>
-                            </div>
-                        </div>   <br>
-                        <div class=" form-group" data-toggle="buttons">
-                          <div class="row">
-                            <div class="col-md-3 btn-group btn-group-toggle">
-                              <div class="form-group">    
-                                     
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="btn-group btn-group-toggle"> 
-                                <label class="btn btn-secondary active">   
-                                  <button type="submit" class="btn btn-secondary active btn-sm" checked>Register</button>     
-                                  <!-- <input type="radio" name="options" id="option1" autocomplete="off" checked> Register -->
-                                </label>
-                                <label class="btn btn-secondary">
-                                  <button class="btn btn-secondary btn-sm" (click)="defaultProfile()">Default</button>   
-                                  <!-- <input type="radio" name="options" id="option2" autocomplete="off" (click)="updateProfile()"> Default -->
-                                </label>
-                                <label class="btn btn-secondary">
-                                  <button type="reset" class="btn btn-secondary  btn-sm" >Cancel</button>   
-                                  <!-- <input type="radio" name="options" id="option3" autocomplete="off"> Cancel -->
-                                </label>            
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">              
-                             </div>
-                            </div>
-                          </div>
-                          
-                        </div>                   
-                        <!-- <div class="form-group">
+                    <span
+                      *ngIf="!customerprofile.get('orgUnit.orgName').valid && customerprofile.get('orgUnit.orgName').touched"
+                      class="alert-error">Please Enter Organisation name</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Organisation Phone Number</label>
+                    <input type="number" formControlName="phoneNumber" class="form-control"
+                      placeholder="Enter Phone Number" />
+                    <span
+                      *ngIf="!customerprofile.get('orgUnit.phoneNumber').valid && customerprofile.get('orgUnit.phoneNumber').touched"
+                      class="alert-error">Please Enter Phone Number</span>
+                  </div>
+                </div>
+                <div formGroupName="postal">
+                  <div class="form-group">
+                    <label>PostalCode</label>
+                    <input type="number" name="postalCode" formControlName="postalCodeValue" class="form-control"
+                      placeholder="PostalCode" >
+                    <!-- <div *ngIf="postalValid.error?.postalExists">Postal Exists
+                    </div> -->
+                    <!-- <div class="text-danger" *ngIf="customerprofile.controls.postalCodeValue.hasError('postalCodeValid')"> Postal Code Validated </div> -->
+                    <!-- <div class="text-danger" *ngIf="postalCodeValue.invalid && (postalCodeValue.dirty || postalCodeValue.touched)" >
+                              User Already Exists
+                              </div>  -->
+                  </div>
+                </div>
+                <div formGroupName="postal">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>City Name</label>
+                        <input type="text" formControlName="cityname" readonly class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Country Name</label>
+                        <input type="text" formControlName="countryname" readonly class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>State Name</label>
+                        <input type="text" formControlName="statename" readonly class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div> <br>
+                <div class=" form-group" data-toggle="buttons">
+                  <div class="row">
+                    <div class="col-md-3 btn-group btn-group-toggle">
+                      <div class="form-group">
+
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="btn-group btn-group-toggle">
+                        <label class="btn btn-secondary active">
+                          <button type="submit" [disabled]=!customerprofile.valid
+                            class="btn btn-secondary active btn-sm" checked>Register</button>
+                          <!-- <input type="radio" name="options" id="option1" autocomplete="off" checked> Register -->
+                        </label>
+
+                        <label class="btn btn-secondary">
+                          <button type="reset" class="btn btn-secondary  btn-sm">Cancel</button>
+                          <!-- <input type="radio" name="options" id="option3" autocomplete="off"> Cancel -->
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- <div class="form-group">
                             <button type="submit" class="btn btn-primary" [disabled]="!customerprofile.valid">Register</button>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                             <button class="btn btn-primary" (click)="defaultProfile()">Default</button>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
                             <button type="reset" class="btn btn-primary" >Cancel</button>
                         </div> -->
-                    </form>
-                </div>
+              </form>
             </div>
+          </div>
         </div>
       </div>
       <p align="center">
         Form Status: {{ customerprofile.status }}
       </p>
-      <pre align="center"> {{customerprofile.value | json}} </pre>  
+      <pre align="center"> {{customerprofile.value | json}} </pre>
     </div>
     <div class="col-md-2">
     </div>

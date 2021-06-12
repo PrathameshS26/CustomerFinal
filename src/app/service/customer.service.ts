@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { Icustomer } from "../model/customer.model";
+import { PostalFeed } from "../model/postalFeed.model";
 
 
 @Injectable()
@@ -65,5 +67,18 @@ export class CustomerService {
     return this.httpClient.put<Icustomer>(url, newCustomer, this.httpOptions);
   }
 
- 
+  findAllPostals(): Observable<PostalFeed[]>{
+    console.log("******findAllpostals from service is called*******")
+		return this.httpClient.get('http://localhost:8888/customers/postals')
+			.pipe(
+				map(res => res['postalCode'])
+			);
+	}
+
+  // getPostalcode(postalCode):Observable<any[]>{
+  //   const url = `${this.base_url}/postals`;
+  //   console.log("********getPostalCode called from service**********");
+  //   console.log(url);
+  //   return this.httpClient.get<any[]>(url, this.httpOptions);
+  // }
 }

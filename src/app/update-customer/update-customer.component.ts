@@ -21,10 +21,13 @@ export class UpdateCustomerComponent  {
   constructor(private form: FormBuilder, private router: Router,private activatedRoute: ActivatedRoute, private customerService: CustomerService) { 
   
   }
-  displayCustomer(){
-    console.log('******Display method called*******');
-    console.log(this.customer.postal.postalCodeValue);
+  defaultPage(){
+    this.router.navigate(['/customers']);
   }
+  // displayCustomer(){
+  //   console.log('******Display method called*******');
+  //   console.log(this.customer.postal.postalCodeValue);
+  //}
   updateCustomer(newCustomer) {
     console.log("*******")
       console.log(newCustomer)
