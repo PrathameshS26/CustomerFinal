@@ -42,7 +42,8 @@
                         <div formGroupName="postal">
                           <div class="form-group">
                             <label>PostalCode</label>
-                            <input type="number"  formControlName="postalCodeValue" class="form-control" placeholder="PostalCode">                 
+                            <input type="number"  formControlName="postalCodeValue" class="form-control" placeholder="PostalCode" postalCodeValidate> 
+                            <dic class="text-danger" *ngIf="customerprofile.controls.postalCodeValue.hasError('postalCodeValidate')"> PostalCode is present </div>                
                             </div>
                         </div>
                         <div formGroupName="postal">
