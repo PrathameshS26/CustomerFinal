@@ -75,6 +75,17 @@ export class CustomerService {
 			);
 	}
 
+  doesPostalExist(postal: number): Observable<boolean> {
+    console.log("does Postal service method is called " + postal)
+    let url = `${this.base_url}/postalcheck`;
+
+    let content: any = {};
+    content.postalCode = postal;
+
+    let response$: Observable<boolean> = this.httpClient.post<boolean>(url, content);
+
+    return response$;
+  }
   // getPostalcode(postalCode):Observable<any[]>{
   //   const url = `${this.base_url}/postals`;
   //   console.log("********getPostalCode called from service**********");

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, NgForm, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { delay, map, switchMap, tap } from 'rxjs/operators';
 import { Icustomer } from '../model/customer.model';
+import { Ipostal } from '../model/postal.model';
 import { CustomerService } from '../service/customer.service';
-import { PostalValidator } from './postalcode.validator';
+// import { PostalValidator } from './postalcode.validator';
 
 @Component({
   selector: 'app-create-customer',
@@ -27,15 +30,33 @@ export class CreateCustomerComponent  {
         phoneNumber: ['',  Validators.required]
       }),
       postal: this.form.group({
-        postalCodeValue: ['',{
-          validators:[Validators.required],asyncValidators: [PostalValidator],
-          updateOn : 'blur'
-        } ],
+        postalCodeValue: ['', [Validators.required],[this.postalExistsValidator()],
+        'blur'],
         cityname: [''],
         countryname: [''],
         statename: [''],
       }),
     });
+  }
+
+  isPostal:boolean
+  isEnable():boolean {
+      return this.isPostal
+  }
+
+
+
+  private postalExistsValidator(): AsyncValidatorFn {
+    console.log("postal Exists method is called *******")
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      console.log(this.customerprofile.value + "****************")
+      return of(control.value).pipe(
+         delay(500),
+        switchMap((postal) => this.customerService.doesPostalExist(postal).pipe(
+          map(postalExists => postalExists ? { postalExists: true } : false)
+        ))
+      );
+    };
   }
 
   get postalValid(){

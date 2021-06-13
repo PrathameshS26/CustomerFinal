@@ -56,7 +56,11 @@
                   <div class="form-group">
                     <label>PostalCode</label>
                     <input type="number" name="postalCode" formControlName="postalCodeValue" class="form-control"
-                      placeholder="PostalCode" >
+                      placeholder="PostalCode"  >
+                      <div *ngIf="isEnable()">
+                        <p> {{ testObject.value }}</p>
+                    </div>
+                      <!-- <div *ngIf="customerprofile.controls['postalCodeValue'].hasError['required']">Postal code exists</div> -->
                     <!-- <div *ngIf="postalValid.error?.postalExists">Postal Exists
                     </div> -->
                     <!-- <div class="text-danger" *ngIf="customerprofile.controls.postalCodeValue.hasError('postalCodeValid')"> Postal Code Validated </div> -->
