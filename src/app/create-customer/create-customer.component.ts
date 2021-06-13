@@ -53,7 +53,7 @@ export class CreateCustomerComponent  {
       return of(control.value).pipe(
          delay(500),
         switchMap((postal) => this.customerService.doesPostalExist(postal).pipe(
-          map(postalExists => postalExists ? { postalExists: true } : false)
+          map(postalExists => postalExists ? { postalExists: true } : null)
         ))
       );
     };
