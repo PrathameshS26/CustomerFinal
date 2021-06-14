@@ -29,6 +29,7 @@ import {
 } from '@angular/material';
 import { UpdateCustomerComponent } from './update-customer/update-customer.component';
 import { CustomerDetailsComponent } from './customer-details/customer-details.component';
+import { Error404Component } from './error404/error404.component';
 
 
 
@@ -42,6 +43,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
     CreateCustomerComponent,
     UpdateCustomerComponent,
     CustomerDetailsComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,

@@ -30,8 +30,8 @@ export class CreateCustomerComponent  {
         phoneNumber: ['',  Validators.required]
       }),
       postal: this.form.group({
-        postalCodeValue: ['', [Validators.required],[this.postalExistsValidator()],
-        'blur'],
+        postalCodeValue: ['', [Validators.required],//[this.postalExistsValidator()],
+        ],
         cityname: [''],
         countryname: [''],
         statename: [''],

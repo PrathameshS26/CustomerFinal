@@ -57,9 +57,9 @@
                     <label>PostalCode</label>
                     <input type="number" name="postalCode" formControlName="postalCodeValue" class="form-control"
                       placeholder="PostalCode"  >
-                      <div *ngIf="isEnable()">
+                      <!-- <div *ngIf="isEnable()">
                         <p> {{ testObject.value }}</p>
-                    </div>
+                    </div> -->
                       <!-- <div *ngIf="customerprofile.controls['postalCodeValue'].hasError['required']">Postal code exists</div> -->
                     <!-- <div *ngIf="postalValid.error?.postalExists">Postal Exists
                     </div> -->
@@ -102,7 +102,7 @@
                       <div class="btn-group btn-group-toggle">
                         <label class="btn btn-secondary active">
                           <button type="submit" [disabled]=!customerprofile.valid
-                            class="btn btn-secondary active btn-sm" checked>Register</button>
+                            class="btn btn-secondary active btn-sm" checked>Register<br></button>
                           <!-- <input type="radio" name="options" id="option1" autocomplete="off" checked> Register -->
                         </label>
 
