@@ -26,11 +26,11 @@ export class CreateCustomerComponent  {
       customerFirstName: ['', Validators.required],
       customerLastName: ['',Validators.required],
       orgUnit: this.form.group({
-        orgName: ['', Validators.required],
+        orgName: ['', [Validators.required]],
         phoneNumber: ['',  Validators.required]
       }),
       postal: this.form.group({
-        postalCodeValue: ['', [Validators.required],//[this.postalExistsValidator()],
+        postalCodeValue: ['', [Validators.required],[this.postalExistsValidator()],
         ],
         cityname: [''],
         countryname: [''],

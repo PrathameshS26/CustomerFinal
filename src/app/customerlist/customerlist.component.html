@@ -2,14 +2,13 @@
 
 <div class="col-md-12">
   <div class="row">
-    <div class="col-md-2">
-    </div>
+    <div class="col-md-2"></div>
     <div class="col-md-8">
       <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">CustomerID</th> 
+            <th scope="col">CustomerID</th>
             <th scope="col">First Name</th>
             <th scope="col">Last Name</th>
           </tr>
@@ -17,21 +16,25 @@
         <tbody>
           <tr *ngFor="let customer of customers, let i=index">
             <th scope="row">{{i + 1}}</th>
-            <td >{{customer.customerId}}</td> 
+            <td>{{customer.customerId}}</td>
             <td>{{customer.customerFirstName}}</td>
             <td>{{customer.customerLastName}}</td>
-            <td><button type="button" class="btn btn-default btn-sm" (click)="getCustomer(customer.customerId)"><i class="fa fa-bars" ></i> Details</button></td>
-              <td><button type="button" class="btn btn-primary btn-sm" (click)="updateCustomer(customer.customerId)"> <i class="fa fa-pencil"></i>  Edit</button></td>
-              <td><button class="btn btn-primary btn-sm btn-sm" (click)="openDialog(customer.customerId)" ><i class="fa fa-trash"></i> Delete</button></td>
+            <td><button type="button" class="btn btn-default btn-sm" (click)="getCustomer(customer.customerId)"><i
+                  class="fa fa-bars"></i> Details</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="updateCustomer(customer.customerId)"> <i
+                  class="fa fa-pencil"></i> Edit</button></td>
+            <td><button class="btn btn-primary btn-sm btn-sm" (click)="openDialog(customer.customerId)"><i
+                  class="fa fa-trash"></i> Delete</button></td>
           </tr>
-         
+
         </tbody>
       </table>
+      
     </div>
-    <div class="col-md-2">
-    </div>
+    <div class="col-md-2"></div>
+
   </div>
+  <div *ngIf="errorMessage"  class="text-center"> 
+   <h3> {{ errorMessage.error.details | json }} </h3>
 </div>
-
-
-
+</div>

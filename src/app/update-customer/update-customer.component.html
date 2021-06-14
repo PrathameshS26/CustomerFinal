@@ -16,9 +16,9 @@
                   <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                             <div *ngIf="f.firstName.errors.required">First Name is required</div>
                         </div> -->
-                  <span
-                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched">Please
-                    Enter First Name</span>
+                  <!-- <span
+                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched"  class="alert-error">Please
+                    Enter First Name</span> -->
                 </div>
                 <div class="form-group">
                   <label>First Name</label>
@@ -28,7 +28,8 @@
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div> -->
                   <span
-                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched">Please
+                    *ngIf="!customerprofile.get('customerFirstName').valid && customerprofile.get('customerFirstName').touched"
+                    class="alert-error">Please
                     Enter First Name</span>
                 </div>
                 <div class="form-group">
@@ -39,7 +40,8 @@
                                 <div *ngIf="f.firstName.errors.required">First Name is required</div>
                             </div> -->
                   <span
-                    *ngIf="!customerprofile.get('customerLastName').valid && customerprofile.get('customerLastName').touched">Please
+                    *ngIf="!customerprofile.get('customerLastName').valid && customerprofile.get('customerLastName').touched"
+                    class="alert-error">Please
                     Enter Last Name</span>
                 </div>
                 <div formGroupName="orgUnit">
@@ -50,48 +52,57 @@
                     <!-- <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                 <div *ngIf="f.lastName.errors.required">Last Name is required</div>
                             </div> -->
-                    <!-- <span *ngIf="!customerprofile.get('orgName').valid && customerprofile.get('orgName').touched">Please
-                      Enter Organisation Name</span> -->
-                    </div>
-                 <div class="form-group">
+                    <span
+                      *ngIf="!customerprofile.get('orgUnit.orgName').valid && customerprofile.get('orgUnit.orgName').touched"
+                      class="alert-error">Please
+                      Enter Organisation Name</span>
+                  </div>
+                  <div class="form-group">
                     <label>Organisation Phone Number</label>
                     <input type="number" formControlName="phoneNumber" class="form-control"
                       [(ngModel)]="customer.orgUnit.phoneNumber" placeholder="Enter Phone Number" />
-                    </div>
-                
+                    <span
+                      *ngIf="!customerprofile.get('orgUnit.phoneNumber').valid && customerprofile.get('orgUnit.phoneNumber').touched"
+                      class="alert-error">Please
+                      Enter Phone Number</span>
+                  </div>
+
+
                 </div>
                 <div formGroupName="postal">
                   <div class="form-group">
                     <label>PostalCode</label>
                     <input type="text" formControlName="postalCodeValue" class="form-control"
                       [(ngModel)]="customer.postal.postalCodeValue" placeholder="PostalCode">
-                  
-                  <div class="row">
-                    <div class="col-8">
-                      <div class="form-group">
-                        <label>City Name</label>
-                        <input type="text" formControlName="cityname" readonly class="form-control"
-                          [(ngModel)]="customer.postal.cityname">
+                    <span *ngIf="customerprofile.controls['postalCodeValue']?.errors?.required"
+                      class="alert-error">Please Enter Phone Number</span>
+
+                    <div class="row">
+                      <div class="col-8">
+                        <div class="form-group">
+                          <label>City Name</label>
+                          <input type="text" formControlName="cityname" readonly class="form-control"
+                            [(ngModel)]="customer.postal.cityname">
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-8">
-                      <div class="form-group">
-                        <label>State Name</label>
-                        <input type="text" formControlName="statename" readonly class="form-control"
-                          [(ngModel)]="customer.postal.statename">
+                      <div class="col-8">
+                        <div class="form-group">
+                          <label>State Name</label>
+                          <input type="text" formControlName="statename" readonly class="form-control"
+                            [(ngModel)]="customer.postal.statename">
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-8">
-                      <div class="form-group">
-                        <label>Country Name</label>
-                        <input type="text" formControlName="countryname" readonly class="form-control"
-                          [(ngModel)]="customer.postal.countryname">
+                      <div class="col-8">
+                        <div class="form-group">
+                          <label>Country Name</label>
+                          <input type="text" formControlName="countryname" readonly class="form-control"
+                            [(ngModel)]="customer.postal.countryname">
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                </div>
-                 <br>
+                <br>
                 <div class=" form-group" data-toggle="buttons">
                   <div class="row">
                     <div class="col-md-3 btn-group btn-group-toggle">

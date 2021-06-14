@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 import { Icustomer } from "../model/customer.model";
 import { PostalFeed } from "../model/postalFeed.model";
 
@@ -18,7 +18,7 @@ export class CustomerService {
     private base_url: string = "http://localhost:8888/customers"
 
     public getAllCustomer(): Observable<Icustomer[]> {
-        return this.httpClient.get<Icustomer[]>(this.base_url, this.httpOptions);
+        return this.httpClient.get<Icustomer[]>(this.base_url, this.httpOptions).pipe(tap(data => console.log(data)));
     }
 
     public getCustomerbyId(cid: number): Observable<Icustomer> {

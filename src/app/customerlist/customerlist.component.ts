@@ -15,11 +15,11 @@ import { UpdateCustomerComponent } from '../update-customer/update-customer.comp
 export class CustomerlistComponent implements OnInit {
 
   public customers:Icustomer[];
-
+  private errorMessage;
   constructor(private customerservice: CustomerService,private router : Router, private dialog:MatDialog, private activatedRoute: ActivatedRoute) { 
     console.log("Component method is called");
     console.log();
-    this.customerservice.getAllCustomer().subscribe(data => this.customers = data);
+    this.customerservice.getAllCustomer().subscribe((data) => {this.customers = data},(error)=>{this.errorMessage=error});
     //console.log(this.customerservice.getAllCustomer().subscribe(data => this.customers = data));
     console.log(this.customers);
   

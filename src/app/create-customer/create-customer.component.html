@@ -3,6 +3,7 @@
     <div class="col-md-2">
     </div>
     <div class="col-md-8">
+
       <div class="jumbotron">
         <div class="container">
           <div class="row">
@@ -57,40 +58,32 @@
                     <label>PostalCode</label>
                     <input type="number" name="postalCode" formControlName="postalCodeValue" class="form-control"
                       placeholder="PostalCode"  >
-                      <!-- <div *ngIf="isEnable()">
-                        <p> {{ testObject.value }}</p>
-                    </div> -->
-                      <!-- <div *ngIf="customerprofile.controls['postalCodeValue'].hasError['required']">Postal code exists</div> -->
-                    <!-- <div *ngIf="postalValid.error?.postalExists">Postal Exists
-                    </div> -->
-                    <!-- <div class="text-danger" *ngIf="customerprofile.controls.postalCodeValue.hasError('postalCodeValid')"> Postal Code Validated </div> -->
-                    <!-- <div class="text-danger" *ngIf="postalCodeValue.invalid && (postalCodeValue.dirty || postalCodeValue.touched)" >
-                              User Already Exists
-                              </div>  -->
+                      <span *ngIf="customerprofile.controls['postalCodeValue']?.errors?.required"
+                      class="alert-error">Please Enter Phone Number</span>
                   </div>
                 </div>
-                <div formGroupName="postal">
-                  <div class="row">
-                    <div class="col-md-4">
+                <!-- <div formGroupName="postal">
+                  <div class="row"> -->
+                    <!-- <div class="col-md-4">
                       <div class="form-group">
                         <label>City Name</label>
                         <input type="text" formControlName="cityname" readonly class="form-control">
                       </div>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <!-- <div class="col-md-4">
                       <div class="form-group">
                         <label>Country Name</label>
                         <input type="text" formControlName="countryname" readonly class="form-control">
                       </div>
-                    </div>
-                    <div class="col-md-4">
+                    </div> -->
+                    <!-- <div class="col-md-4">
                       <div class="form-group">
                         <label>State Name</label>
                         <input type="text" formControlName="statename" readonly class="form-control">
                       </div>
-                    </div>
-                  </div>
-                </div> <br>
+                    </div> -->
+                  <!-- </div>
+                </div>  --><br>
                 <div class=" form-group" data-toggle="buttons">
                   <div class="row">
                     <div class="col-md-3 btn-group btn-group-toggle">
@@ -107,7 +100,7 @@
                         </label>
 
                         <label class="btn btn-secondary">
-                          <button type="reset" class="btn btn-secondary  btn-sm">Cancel</button>
+                          <button type="reset" class="btn btn-secondary btn-sm " [routerLink]="['/customers']">Cancel</button>
                           <!-- <input type="radio" name="options" id="option3" autocomplete="off"> Cancel -->
                         </label>
                       </div>
